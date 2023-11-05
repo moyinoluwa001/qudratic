@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quadratic Equation Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #container {
+            margin: 100px auto;
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Quadratic Equation Solver</h1>
+        <input type="number" id="a" placeholder="Enter coefficient a">
+        <input type="number" id="b" placeholder="Enter coefficient b">
+        <input type="number" id="c" placeholder="Enter coefficient c">
+        <button onclick="solveQuadratic()">Solve</button>
+        <p id="solutions"></p>
+    </div>
+
+    <script>
+        function solveQuadratic() {
+            // Get coefficients from input fields
+            const a = parseFloat(document.getElementById("a").value);
+            const b = parseFloat(document.getElementById("b").value);
+            const c = parseFloat(document.getElementById("c").value);
+
+            // Calculate the discriminant
+            const discriminant = b**2 - 4*a*c;
+
+            // Check the discriminant for the nature of the solutions
+            if (discriminant > 0) {
+                // Two real and distinct solutions
+                const root1 = (-b + Math.sqrt(discriminant)) / (2*a);
+                const root2 = (-b - Math.sqrt(discriminant)) / (2*a);
+                document.getElementById("solutions").innerHTML = `Solutions: x1 = ${root1}, x2 = ${root2}`;
+            } else if (discriminant == 0) {
+                // One real solution (a repeated root)
+                const root = -b / (2*a);
+                document.getElementById("solutions").innerHTML = `Solution: x = ${root}`;
+            } else {
+                // Complex solutions
+                const realPart = -b / (2*a);
+                const imaginaryPart = Math.sqrt(Math.abs(discriminant)) / (2*a);
+                document.getElementById("solutions").innerHTML = `Solutions: x1 = ${realPart} + ${imaginaryPart}i, x2 = ${realPart} - ${imaginaryPart}i`;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
